@@ -6,6 +6,11 @@ DatabaseConnection.connect('music_library')
 
 artist_repository = ArtistRepository.new
 
-artist_repository.all.each do |artist|
-  p artist
-end
+# artist_repository.all.each do |artist|
+#   p artist
+# end
+
+repo = ArtistRepository.new
+
+artist = artist_repository.find(3)
+puts artist.name

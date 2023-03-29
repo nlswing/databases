@@ -1,4 +1,4 @@
-{{TABLE NAME}} Model and Repository Classes Design Recipe
+Artists Model and Repository Classes Design Recipe
 Copy this recipe template to design and implement Model and Repository classes for a database table.
 
 1. Design and create the Table
@@ -10,15 +10,16 @@ In this template, we'll use an example table students
 
 # EXAMPLE
 
-Table: students
+Table: artists
 
 Columns:
-id | name | cohort_name
+id | name | genre
+
 2. Create Test SQL seeds
 Your tests will depend on data stored in PostgreSQL to run.
 
 If seed data is provided (or you already created it), you can skip this step.
-
+```sql
 -- EXAMPLE
 -- (file: spec/seeds_{table_name}.sql)
 
@@ -36,6 +37,7 @@ TRUNCATE TABLE students RESTART IDENTITY; -- replace with your own table name.
 INSERT INTO students (name, cohort_name) VALUES ('David', 'April 2022');
 INSERT INTO students (name, cohort_name) VALUES ('Anna', 'May 2022');
 Run this SQL file on the database to truncate (empty) the table, and insert the seed data. Be mindful of the fact any existing records in the table will be deleted.
+```
 ```bash
 psql -h 127.0.0.1 your_database_name < seeds_{table_name}.sql
 ```
@@ -105,6 +107,15 @@ class ArtistRepository
 
     # Returns an array of Artist objects.
   end
+ # select a single record
+ # given the id in argument (a number)
+  def find(id)
+  # Executes the SQL query:
+  # SELECT id, name, genre FROM artists WHERE id = $1
+
+  # Returns a Single Artist object
+
+  end
 
 end
 ```
@@ -124,7 +135,24 @@ artists = repo.all
 artists.length # => '2'
 artists.first.id # => '1'
 artists.first.name # => 'Pixies'
-```
+
+# 2
+# Get a single artist
+
+repo = ArtistRepository.new
+
+artist = repo.find(1)
+artist.name # => 'Pixies'
+artist.genre # => 'Rock'
+
+# 3
+# Get another single artist
+
+repo = ArtistRepository.new
+
+artist = repo.find(2)
+artist.name # => 'ABBA'
+artist.genre # => 'Pop'
  
 Encode this example as a test.
 

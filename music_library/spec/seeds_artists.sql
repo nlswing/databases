@@ -10,4 +10,4 @@ TRUNCATE TABLE artists RESTART IDENTITY; -- replace with your own table name.
 -- Replace these statements with your own seed data.
 
 INSERT INTO artists (name, genre) VALUES ('Pixies', 'Rock');
-INSERT INTO artists (name, genre) VALUES ('Abba', 'Pop');
+INSERT INTO artists (name, genre) VALUES ('ABBA', 'Pop');
