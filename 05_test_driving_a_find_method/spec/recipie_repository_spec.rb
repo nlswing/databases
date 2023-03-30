@@ -42,7 +42,7 @@ describe RecipieRepository do
   end
 
 
-  xit 'returns a single Pizza recipie' do
+  it 'returns a single Pizza recipie' do
     repo = RecipieRepository.new
     recipie = repo.find(2)
 
