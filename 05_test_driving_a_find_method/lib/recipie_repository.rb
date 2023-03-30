@@ -21,7 +21,7 @@ class RecipieRepository
   end
 
   def find(id)
-    sql = 'SELECT id, name, average_cook_time_mins FROM recipies WHERE id = $1;'
+    sql = 'SELECT id, name, average_cook_time_mins, rating FROM recipies WHERE id = $1;'
     sql_params = [id]
 
     result_set = DatabaseConnection.exec_params(sql, sql_params)
@@ -32,7 +32,7 @@ class RecipieRepository
     recipie.id = record['id']
     recipie.name = record['name']
     recipie.average_cook_time_mins = record['average_cook_time_mins']
-    recipie.rating['rating']
+    recipie.rating = record['rating']
 
     return recipie
   end

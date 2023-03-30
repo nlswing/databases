@@ -31,11 +31,11 @@ describe RecipieRepository do
     expect(recipies[1].rating).to eq('4')
   end
 
-  xit 'returns a single Lasagne recipie' do
+  it 'returns a single Lasagne recipie' do
     repo = RecipieRepository.new
     recipie = repo.find(1)
     
-    expect(recipie.id).to eq(1)
+    expect(recipie.id).to eq('1')
     expect(recipie.name).to eq('Lasagne')
     expect(recipie.average_cook_time_mins).to eq('100')
     expect(recipie.rating).to eq('4')
@@ -46,7 +46,7 @@ describe RecipieRepository do
     repo = RecipieRepository.new
     recipie = repo.find(2)
 
-    expect(recipie.id).to eq(2)
+    expect(recipie.id).to eq('2')
     expect(recipie.name).to eq('Pizza')
     expect(recipie.average_cook_time_mins).to eq('25')
     expect(recipie.rating).to eq('4')
